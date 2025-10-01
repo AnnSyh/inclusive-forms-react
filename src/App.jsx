@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import './App.css'
+import { useFetch } from './hooks/useFetch'
 
 function App() {
   // Состояние формы
@@ -197,6 +198,15 @@ function App() {
       })
       speakText('Форма очищена. Все поля сброшены.')
     }
+  }
+
+  const {isLoading, data, error} = useFetch('/api/form/1/questions/')
+  
+  if(isLoading){
+    return <p>Загрузка...</p>
+  }
+  if(error){
+    return <p>{error}</p>
   }
 
   return (
