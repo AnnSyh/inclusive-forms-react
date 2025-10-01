@@ -10,23 +10,29 @@
     padding: 20px;
 }
 
-.voice-controls {
+.voice-controls-wrap {
     background: rgba(255, 255, 255, 0.95);
     padding: 15px;
     border-radius: 10px;
     margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    display: flex;
+    gap: 15px;
+    flex-direction: column;
+}
+.voice-controls {
     display: flex;
     gap: 15px;
     align-items: center;
     flex-wrap: wrap;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .voice-btn {
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
-    background: #4CAF50;
+    background: #000000;
     color: white;
     cursor: pointer;
     font-size: 14px;
@@ -34,7 +40,7 @@
 }
 
 .voice-btn:hover:not(:disabled) {
-    background: #45a049;
+    background: #000000;
     transform: translateY(-2px);
 }
 
@@ -44,11 +50,13 @@
 }
 
 .voice-btn.stop {
-    background: #f44336;
+    background: #ffffff;
+    border: 1px solid #000000;
+    color:#000;
 }
 
 .voice-btn.stop:hover:not(:disabled) {
-    background: #da190b;
+    background:  #000000;
 }
 
 .voice-toggle {
