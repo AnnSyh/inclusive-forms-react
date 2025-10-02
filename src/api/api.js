@@ -1,4 +1,4 @@
-const BASE_URL = import.meta.env.VITE_API_URL | 'http://89.169.154.49:8000';
+const BASE_URL = 'http://89.169.154.49:8000';
 
 export const postQuestions = async (body) => {
   const response = await fetch(`${BASE_URL}/api/form/1/submit/`, {
