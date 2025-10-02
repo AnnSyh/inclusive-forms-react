@@ -1,0 +1,40 @@
+.form-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.submit-btn,
+.reset-btn {
+    padding: 15px 30px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.submit-btn {
+    background: #667eea;
+    color: white;
+}
+
+.submit-btn:hover:not(:disabled) {
+    background: #5a6fd8;
+    transform: translateY(-2px);
+}
+
+.submit-btn:disabled {
+    background: #cccccc;
+    cursor: not-allowed;
+}
+
+.reset-btn {
+    background: #6c757d;
+    color: white;
+}
+
+.reset-btn:hover {
+    background: #5a6268;
+    transform: translateY(-2px);
+}
