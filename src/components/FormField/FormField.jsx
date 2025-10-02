@@ -59,6 +59,7 @@ const FormField = ({
             className="form-select"
             onChange={(e) => {
               onChange(field.text, e.target.value);
+              onSpeakSelectedOption(e.target.value)
             }}
           >
             <option value="">{field.hint || 'Выберите вариант'}</option>
@@ -131,7 +132,7 @@ const FormField = ({
         <div className="form-group" >
         <label 
             htmlFor={field.text}
-            onMouseEnter={() => onSpeakField(field.label || field.text)}
+            onMouseEnter={() => onAutoSpeakField(field.label || field.text, field.q_type)}
             className="form-label"
         >
             {field.label || field.text}

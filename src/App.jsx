@@ -1,18 +1,22 @@
-import React, { useState, useEffect } from 'react';
-import './App.css';
-import { useFetch } from './hooks/useFetch';
-import { useSpeech } from './hooks/useSpeech';
-import { useForm } from './hooks/useForm';
-import VoiceControls from './components/VoiceControls/VoiceControls';
-import DynamicForm from './components/DynamicForm/DynamicForm.jsx';
-import FormActions from './components/FormActions/FormActions';
+import React, { useState, useEffect } from "react";
+import "./App.css";
+import { useFetch } from "./hooks/useFetch";
+import { useSpeech } from "./hooks/useSpeech";
+import { useForm } from "./hooks/useForm";
+import VoiceControls from "./components/VoiceControls/VoiceControls";
+import DynamicForm from "./components/DynamicForm/DynamicForm.jsx";
+import FormActions from "./components/FormActions/FormActions";
 
 function App() {
   const [autoSpeakFields, setAutoSpeakFields] = useState(true);
-  
-  const { isLoading, data: formFields, error } = useFetch('/api/form/1/questions/');
+
+  const {
+    isLoading,
+    data: formFields,
+    error,
+  } = useFetch("/api/form/1/questions/");
   const { form, handleInputChange, resetForm } = useForm(formFields);
-  
+
   const {
     isSpeaking,
     currentField,
@@ -21,7 +25,7 @@ function App() {
     speakCurrentField,
     speakAllForm,
     stopSpeech,
-    initializeSpeech
+    initializeSpeech,
   } = useSpeech();
 
   // Инициализация синтеза речи
@@ -29,9 +33,15 @@ function App() {
     initializeSpeech();
   }, [initializeSpeech]);
 
-  const autoSpeakField = (fieldName) => {
+  const autoSpeakField = (fieldName, qType) => {
     if (autoSpeakFields) {
-      speakField(fieldName);
+      if (qType === "select") {
+        speakText(
+          `${fieldName} Используйте стрелки вверх и вниз для выбора варианта.`
+        );
+      } else {
+        speakField(fieldName);
+      }
     }
   };
 
@@ -42,21 +52,21 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
     if (!form.consent) {
-      alert('Необходимо принять условия обработки персональных данных');
-      speakText('Необходимо принять условия обработки персональных данных');
+      alert("Необходимо принять условия обработки персональных данных");
+      speakText("Необходимо принять условия обработки персональных данных");
       return;
     }
 
-    console.log('Данные формы:', form);
-    speakText('Форма успешно отправлена! Спасибо за вашу заявку.');
+    console.log("Данные формы:", form);
+    speakText("Форма успешно отправлена! Спасибо за вашу заявку.");
   };
 
   const handleReset = () => {
-    if (confirm('Вы уверены, что хотите очистить все поля?')) {
+    if (confirm("Вы уверены, что хотите очистить все поля?")) {
       resetForm(formFields);
-      speakText('Форма очищена. Все поля сброшены.');
+      speakText("Форма очищена. Все поля сброшены.");
     }
   };
 
@@ -81,8 +91,8 @@ function App() {
         <div className="error-state">
           <h2>Ошибка загрузки формы</h2>
           <p>{error}</p>
-          <button 
-            onClick={() => window.location.reload()} 
+          <button
+            onClick={() => window.location.reload()}
             className="retry-btn"
           >
             Попробовать снова
