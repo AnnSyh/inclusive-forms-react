@@ -3,7 +3,6 @@ import './App.css';
 import { useFetch } from './hooks/useFetch';
 import { useSpeech } from './hooks/useSpeech';
 import { useForm } from './hooks/useForm';
-import { optionLabels } from './utils/optionLabels';
 import VoiceControls from './components/VoiceControls/VoiceControls';
 import DynamicForm from './components/DynamicForm/DynamicForm.jsx';
 import FormActions from './components/FormActions/FormActions';
@@ -36,8 +35,8 @@ function App() {
     }
   };
 
-  const speakSelectedOption = (fieldName, value) => {
-    const label = optionLabels[fieldName]?.[value] || value;
+  const speakSelectedOption = (value) => {
+    const label = value;
     speakText(`Выбрано: ${label}`);
   };
 
@@ -115,7 +114,6 @@ function App() {
           onSpeakField={speakField}
           onAutoSpeakField={autoSpeakField}
           onSpeakSelectedOption={speakSelectedOption}
-          optionLabels={optionLabels}
         />
 
         <FormActions

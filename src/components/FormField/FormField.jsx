@@ -29,7 +29,6 @@ const FormField = ({
     required: field.required || false,
     onFocus: () => onAutoSpeakField(field.label || field.text),
     placeholder: field.hint || '',
-    'aria-describedby': field.help_text ? `${field.text}-help` : undefined,
   };
 
   const renderSelectOptions = () => {
@@ -60,9 +59,6 @@ const FormField = ({
             className="form-select"
             onChange={(e) => {
               onChange(field.text, e.target.value);
-              if (optionLabels[field.text]) {
-                onSpeakSelectedOption(field.text, e.target.value);
-              }
             }}
           >
             <option value="">{field.hint || 'Выберите вариант'}</option>
@@ -144,14 +140,7 @@ const FormField = ({
         
         {renderFieldByType()}
         
-        {field.help_text && (
-            <div 
-            id={`${field.text}-help`} 
-            className="help-text"
-            >
-            {field.help_text}
-            </div>
-        )}
+
         </div>
     </div>
   );

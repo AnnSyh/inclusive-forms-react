@@ -7,7 +7,7 @@ export const useForm = (formFields) => {
     if (formFields && formFields.length > 0) {
       const initialForm = {};
       formFields.forEach(field => {
-        initialForm[field.text] = field.default_value || '';
+        initialForm[field.text] =  '';
       });
       initialForm.consent = false;
       setForm(initialForm);
@@ -25,7 +25,7 @@ export const useForm = (formFields) => {
     const emptyForm = {};
     if (formFields && formFields.length > 0) {
       formFields.forEach(field => {
-        emptyForm[field.text] = field.default_value || '';
+        emptyForm[field.text] = '';
       });
     }
     emptyForm.consent = false;
