@@ -1,7 +1,3 @@
-:root {
-   
-}
-
 .form-actions {
     display: flex;
     gap: var(--btn-gap);

@@ -12,7 +12,6 @@ const FormActions = ({
       <button 
         type="submit" 
         className="submit-btn" 
-        disabled={!consent} 
         onMouseOver={() => onSpeakField('кнопка Отправить анкету')}
       >
         Отправить анкету

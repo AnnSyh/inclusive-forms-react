@@ -53,12 +53,6 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!form.consent) {
-      alert("Необходимо принять условия обработки персональных данных");
-      speakText("Необходимо принять условия обработки персональных данных");
-      return;
-    }
-
     console.log("Данные формы:", form);
     speakText("Форма успешно отправлена! Спасибо за вашу заявку.");
   };
