@@ -1,10 +1,32 @@
 :root {
     /* Цвета */
     --primary-color: black;
+    --text-color: black;
+    --text-light: white;
+    --text-error: #ff4757;
+    
+    /* Цвета фона */
     --background-light: rgba(255, 255, 255, 0.95);
     --background-gray: #cccccc;
+    --background-white: white;
+    --background-focus: rgba(102, 126, 234, 0.1);
+    --bg-light: rgba(255, 255, 255, 0.95);
+    --bg-white: white;
+    
+    /* Состояния */
+    --disabled-color: #cccccc;
+    --btn-disabled-bg: #cccccc;
+    
+    /* Цвета границ */
+    --border-default: #cccccc;
+    --border-focus: black;
+    --border-error: #ff4757;
+    
+    /* Тени */
     --shadow-color: rgba(0, 0, 0, 0.2);
-    --text-color: black;
+    --shadow: 0 10px 30px var(--shadow-color);
+    --shadow-light: 0 4px 15px rgba(0, 0, 0, 0.1);
+    --shadow-focus: 0 0 0 3px var(--background-focus);
     
     /* Размеры шрифтов */
     --font-size-base: 40px;
@@ -20,20 +42,47 @@
     --spacing-xxl: 84px;
     --spacing-xxxl: 108px;
     
-    /* Размеры */
-    --border-radius: 15px;
-    --border-radius-small: 8px;
-    --border-width: 4px;
+    /* Дополнительные отступы */
+    --padding-medium: 15px;
+    --padding-button: 10px 20px;
+    --margin-bottom: 20px;
+    
+    /* Отступы для кнопок */
+    --btn-gap: 15px;
+    --btn-margin-top: 30px;
+    --btn-padding-vertical: 15px;
+    --btn-padding-horizontal: 30px;
+    
+    /* Размеры элементов */
     --checkbox-size: 30px;
     --container-max-width: 1384px;
+    --border-width: 4px;
     
-    /* Тени */
-    --shadow: 0 10px 30px var(--shadow-color);
+    /* Радиусы */
+    --border-radius: 15px;
+    --border-radius-small: 8px;
+    
+    /* Gap отступы */
+    --gap-small: 8px;
+    --gap-medium: 15px;
     
     /* Анимации */
-    --transition: all 0.2s;
+    --transition: all 0.3s ease;
     --animation-duration: 0.6s;
+    
+    /* Эффекты */
+    --hover-transform: translateY(-2px);
+    --btn-hover-transform: translateY(-2px);
+    --btn-transition: all 0.3s ease;
+    
+    /* Границы */
+    --border-default-style: 1px solid var(--primary-color);
+    
+    /* Цвета кнопок */
+    --btn-primary-text: white;
 }
+
+
 
 * {
     margin: 0;

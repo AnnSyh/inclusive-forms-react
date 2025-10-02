@@ -43,16 +43,7 @@ export const useSpeech = () => {
 
   const speakField = useCallback((fieldName) => {
     setCurrentField(fieldName);
-    // console.log('fieldName = ', fieldName);
-    // console.log('q_type = ', q_type);
-
-    speakText(`Поле: ${fieldName}`);
-
-     if (q_type === 'select') {
-        speakText(`Используйте стрелки вверх и вниз для выбора варианта.`);
-     } 
-     
-
+    speakText(`Поле: ${fieldName}. Используйте стрелки вверх и вниз для выбора варианта.`);
   }, [speakText]);
 
   const speakCurrentField = useCallback(() => {

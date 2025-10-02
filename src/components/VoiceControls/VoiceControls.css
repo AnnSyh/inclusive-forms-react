@@ -1,34 +1,5 @@
 :root {
-    /* Цвета фона */
-    --bg-light: rgba(255, 255, 255, 0.95);
-    --bg-white: white;
-    
-    /* Основные цвета */
-    --primary-color: black;
-    --text-light: white;
-    
-    /* Состояния */
-    --disabled-color: #cccccc;
-    
-    /* Тени */
-    --shadow-light: 0 4px 15px rgba(0, 0, 0, 0.1);
-    
-    /* Отступы */
-    --padding-medium: 15px;
-    --padding-button: 10px 20px;
-    --margin-bottom: 20px;
-    --gap-medium: 15px;
-    --gap-small: 8px;
-    
-    /* Радиусы */
-    --border-radius: 10px;
-    
-    /* Анимации */
-    --transition: all 0.3s ease;
-    --hover-transform: translateY(-2px);
-    
-    /* Границы */
-    --border-default: 1px solid var(--primary-color);
+
 }
 
 .voice-controls-wrap {
@@ -74,6 +45,7 @@
     background: var(--bg-white);
     border: var(--border-default);
     color: var(--primary-color);
+    border: 1px solid;
 }
 
 .voice-btn.stop:hover:not(:disabled) {

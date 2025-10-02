@@ -1,18 +1,5 @@
 :root {
-    /* Цвета кнопок */
-    --primary-color: black;
-    --btn-primary-text: white;
-    --btn-disabled-bg: #cccccc;
-    
-    /* Отступы */
-    --btn-gap: 15px;
-    --btn-margin-top: 30px;
-    --btn-padding-vertical: 15px;
-    --btn-padding-horizontal: 30px;
-    
-    /* Эффекты */
-    --btn-hover-transform: translateY(-2px);
-    --btn-transition: all 0.3s ease;
+   
 }
 
 .form-actions {

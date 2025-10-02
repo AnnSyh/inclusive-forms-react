@@ -1,36 +1,5 @@
 :root {
-    /* Цвета текста */
-    --primary-color: black;
-    --text-error: #ff4757;
-    
-    /* Цвета границ */
-    --border-default: #cccccc;
-    --border-focus: black;
-    --border-error: #ff4757;
-    
-    /* Фоны */
-    --background-white: white;
-    --background-focus: rgba(102, 126, 234, 0.1);
-    
-    /* Размеры */
-    --spacing-small: 8px;
-    --spacing-medium: 12px;
-    --spacing-large: 15px;
-    
-    /* Радиусы */
-    --border-radius: 8px;
-    
-    /* Тени */
-    --shadow-focus: 0 0 0 3px var(--background-focus);
-    
-    /* Анимации */
-    --transition: all 0.3s ease;
-    
-    /* Размеры чекбокса */
-    --checkbox-size: 30px;
-    
-    /* Отступы */
-    --gap-medium: 12px;
+  
 }
 
 .form-group label {
