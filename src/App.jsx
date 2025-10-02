@@ -11,6 +11,7 @@ import { postQuestions } from "./api/api";
 
 function App() {
   const [autoSpeakFields, setAutoSpeakFields] = useState(true);
+  const [submitStatus, setSubmitStatus] = useState({ state: "", message: "" });
 
   const {
     isLoading,
@@ -65,10 +66,13 @@ function App() {
     try {
       await postQuestions(payload);
       resetForm(formFields);
-      speakText("Форма успешно отправлена! Спасибо за вашу заявку.");
+      const msg = "Форма успешно отправлена! Спасибо за вашу заявку.";
+      speakText(msg);
+      setSubmitStatus({ state: "success", message: msg });
     } catch (err) {
-      console.error("Ошибка отправки:", err);
-      speakText("Произошла ошибка при отправке формы");
+      const msg = "Произошла ошибка при отправке формы. Попробуйте ещё раз.";
+      speakText(msg);
+      setSubmitStatus({ state: "error", message: msg });
     }
   };
 
@@ -140,6 +144,7 @@ function App() {
           onReset={handleReset}
           consent={form.consent}
           onSpeakField={speakField}
+          submitStatusData={submitStatus}
         />
       </form>
     </div>

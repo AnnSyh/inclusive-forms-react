@@ -1,9 +1,16 @@
+.form-actionts-wrapper{
+ display: flex;
+ flex-direction: column; 
+ text-align: center;  
+}
+
 .form-actions {
     display: flex;
     gap: var(--btn-gap);
     justify-content: center;
     margin-top: var(--btn-margin-top);
 }
+
 
 .submit-btn,
 .reset-btn {

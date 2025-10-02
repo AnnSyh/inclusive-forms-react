@@ -1,29 +1,38 @@
-import React from 'react';
-import './FormActions.css';
+import React from "react";
+import "./FormActions.css";
 
 const FormActions = ({
   onSubmit,
   onReset,
   consent,
-  onSpeakField
+  onSpeakField,
+  submitStatusData,
 }) => {
   return (
-    <div className="form-actions">
-      <button 
-        type="submit" 
-        className="submit-btn" 
-        onMouseOver={() => onSpeakField('кнопка Отправить анкету')}
-      >
-        Отправить анкету
-      </button>
-      <button 
-        type="button" 
-        onClick={onReset} 
-        className="reset-btn"
-        onMouseOver={() => onSpeakField('кнопка Очистить форму')}
-      >
-        Очистить форму
-      </button>
+    <div>
+      <div className="form-actions">
+        <button
+          type="submit"
+          className="submit-btn"
+          onMouseOver={() => onSpeakField("кнопка Отправить анкету")}
+        >
+          Отправить анкету
+        </button>
+        <button
+          type="button"
+          onClick={onReset}
+          className="reset-btn"
+          onMouseOver={() => onSpeakField("кнопка Очистить форму")}
+        >
+          Очистить форму
+        </button>
+      </div>
+      {submitStatusData.state === "success" && (
+        <p style={{ color: "green" }}>{submitStatusData.message}</p>
+      )}
+      {submitStatusData.state === "error" && (
+        <p style={{ color: "red" }}>{submitStatusData.message}</p>
+      )}{" "}
     </div>
   );
 };
