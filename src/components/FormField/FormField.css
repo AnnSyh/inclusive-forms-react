@@ -1,35 +1,94 @@
+:root {
+    /* Цвета текста */
+    --primary-color: black;
+    --text-error: #ff4757;
+    
+    /* Цвета границ */
+    --border-default: #cccccc;
+    --border-focus: black;
+    --border-error: #ff4757;
+    
+    /* Фоны */
+    --background-white: white;
+    --background-focus: rgba(102, 126, 234, 0.1);
+    
+    /* Размеры */
+    --spacing-small: 8px;
+    --spacing-medium: 12px;
+    --spacing-large: 15px;
+    
+    /* Радиусы */
+    --border-radius: 8px;
+    
+    /* Тени */
+    --shadow-focus: 0 0 0 3px var(--background-focus);
+    
+    /* Анимации */
+    --transition: all 0.3s ease;
+    
+    /* Размеры чекбокса */
+    --checkbox-size: 30px;
+    
+    /* Отступы */
+    --gap-medium: 12px;
+}
 
 .form-group label {
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: var(--spacing-small);
     font-weight: 400;
-    color: #000;
+    color: var(--primary-color);
     cursor: pointer;
 }
 
 .form-group label:hover {
-    color: #000;
+    color: var(--primary-color);
 }
 
 .form-group input,
 .form-group select,
 .form-group textarea {
     width: 100%;
-    padding: 12px 15px;
-    border: 2px solid #e1e5e9;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-    background: white;
+    padding: var(--spacing-medium) var(--spacing-large);
+    border: 2px solid var(--border-default);
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+    background: var(--background-white);
 }
 
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
     outline: none;
-    border-color: #000;
-    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    border-color: var(--border-focus);
+    box-shadow: var(--shadow-focus);
 }
 
 .form-group input:invalid {
-    border-color: #ff4757;
+    border-color: var(--border-error);
+}
+
+.form-group--checkbox .form-group{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    align-items: center;
+    gap: var(--gap-medium);
+    width: fit-content; 
+    max-width: 100%; 
+}
+
+.form-group--checkbox .form-checkbox {
+    flex-shrink: 0;
+    width: var(--checkbox-size);
+    height: var(--checkbox-size);
+    margin-top: 2px; 
+}
+
+.form-group--checkbox .form-label {
+    flex: 1;
+    min-width: 0;
+    white-space: normal;
+    line-height: 1.4;
+    margin-bottom: 0;
 }

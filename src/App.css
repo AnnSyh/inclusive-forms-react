@@ -1,102 +1,139 @@
+:root {
+    /* Цвета */
+    --primary-color: black;
+    --background-light: rgba(255, 255, 255, 0.95);
+    --background-gray: #cccccc;
+    --shadow-color: rgba(0, 0, 0, 0.2);
+    --text-color: black;
+    
+    /* Размеры шрифтов */
+    --font-size-base: 40px;
+    --font-size-mobile: 20px;
+    --font-size-heading: 60px;
+    --font-size-heading-mobile: 30px;
+    
+    /* Отступы */
+    --spacing-small: 10px;
+    --spacing-medium: 15px;
+    --spacing-large: 20px;
+    --spacing-xl: 30px;
+    --spacing-xxl: 84px;
+    --spacing-xxxl: 108px;
+    
+    /* Размеры */
+    --border-radius: 15px;
+    --border-radius-small: 8px;
+    --border-width: 4px;
+    --checkbox-size: 30px;
+    --container-max-width: 1384px;
+    
+    /* Тени */
+    --shadow: 0 10px 30px var(--shadow-color);
+    
+    /* Анимации */
+    --transition: all 0.2s;
+    --animation-duration: 0.6s;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Open Sans', sans-serif;
-    font-size: 40px;
+    font-size: var(--font-size-base);
 }
 
 @media (max-width: 768px) {
     * {
-        font-size: 20px;
+        font-size: var(--font-size-mobile);
     }
 }
 
 .container {
-    max-width: 1384px;
+    max-width: var(--container-max-width);
     margin: 0 auto;
-    padding: 20px;
+    padding: var(--spacing-large);
 }
 
-
 .accessibility-form {
-    background: rgba(255, 255, 255, 0.95);
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    font-size: 40px;
+    background: var(--background-light);
+    padding: var(--spacing-xl);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    font-size: var(--font-size-base);
 }
 
 .accessibility-form input,
 .accessibility-form select,
 .accessibility-form textarea {
-     font-size: 40px;
+     font-size: var(--font-size-base);
+}
+
+input[type="checkbox"]{
+    width: var(--checkbox-size);
+    height: var(--checkbox-size);
+    cursor: pointer;
+    transition: var(--transition);
 }
 
 .accessibility-form h1 {
     text-align: center;
-    color: black;
-    margin-bottom: 108px;
-    font-size: 60px;
+    color: var(--text-color);
+    margin-bottom: var(--spacing-xxxl);
+    font-size: var(--font-size-heading);
     font-weight: 400;
 }
 
 .voice-btn,
 .submit-btn,
 .reset-btn {
- font-size: 40px;
- border-radius: 15px;
+    font-size: var(--font-size-base);
+    border-radius: var(--border-radius);
 }
-
 
 .form-group {
-    margin-bottom: 84px;
+    margin-bottom: var(--spacing-xxl);
 }
-
 
 .form-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 15px;
+    gap: var(--spacing-medium);
 }
-
 
 .consent {
-    background: #f8f9fa;
-    padding: 20px;
-    border-radius: 8px;
-    border-left: 4px solid #000;
+    background: var(--background-gray);
+    padding: var(--spacing-large);
+    border-radius: var(--border-radius-small);
+    border-left: var(--border-width) solid var(--primary-color);
 }
-
 
 /* Адаптивность */
 @media (max-width: 768px) {
-
     .accessibility-form {
-        font-size: 20px;
+        font-size: var(--font-size-mobile);
     }
 
     .accessibility-form input,
     .accessibility-form select,
     .accessibility-form textarea {
-        font-size: 20px;
+        font-size: var(--font-size-mobile);
     }
 
     .accessibility-form h1 {
-        font-size: 30px;
-        margin-bottom: 20px;
+        font-size: var(--font-size-heading-mobile);
+        margin-bottom: var(--spacing-large);
     }
 
     .voice-btn,
     .submit-btn,
     .reset-btn {
-    font-size: 20px;
+        font-size: var(--font-size-mobile);
     }
 
     .form-group {
-        margin-bottom: 20px;
+        margin-bottom: var(--spacing-large);
     }
-
 
     .form-row {
         grid-template-columns: 1fr;
@@ -107,11 +144,11 @@
     }
 
     .accessibility-form {
-        padding: 20px;
+        padding: var(--spacing-large);
     }
 
     .container {
-        padding: 10px;
+        padding: var(--spacing-small);
     }
 }
 
@@ -121,7 +158,6 @@
         opacity: 0;
         transform: translateY(20px);
     }
-
     to {
         opacity: 1;
         transform: translateY(0);
@@ -129,5 +165,5 @@
 }
 
 .accessibility-form {
-    animation: fadeIn 0.6s ease-out;
+    animation: fadeIn var(--animation-duration) ease-out;
 }

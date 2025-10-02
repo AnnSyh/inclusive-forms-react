@@ -1,40 +1,57 @@
+:root {
+    /* Цвета кнопок */
+    --primary-color: black;
+    --btn-primary-text: white;
+    --btn-disabled-bg: #cccccc;
+    
+    /* Отступы */
+    --btn-gap: 15px;
+    --btn-margin-top: 30px;
+    --btn-padding-vertical: 15px;
+    --btn-padding-horizontal: 30px;
+    
+    /* Эффекты */
+    --btn-hover-transform: translateY(-2px);
+    --btn-transition: all 0.3s ease;
+}
+
 .form-actions {
     display: flex;
-    gap: 15px;
+    gap: var(--btn-gap);
     justify-content: center;
-    margin-top: 30px;
+    margin-top: var(--btn-margin-top);
 }
 
 .submit-btn,
 .reset-btn {
-    padding: 15px 30px;
+    padding: var(--btn-padding-vertical) var(--btn-padding-horizontal);
     border: none;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: var(--btn-transition);
 }
 
 .submit-btn {
-    background: #667eea;
-    color: white;
+    background: var(--primary-color);
+    color: var(--btn-primary-text);
 }
 
 .submit-btn:hover:not(:disabled) {
-    background: #5a6fd8;
-    transform: translateY(-2px);
+    background: var(--primary-color);
+    transform: var(--btn-hover-transform);
 }
 
 .submit-btn:disabled {
-    background: #cccccc;
+    background: var(--btn-disabled-bg);
     cursor: not-allowed;
 }
 
 .reset-btn {
-    background: #6c757d;
-    color: white;
+    background: var(--primary-color);
+    color: var(--btn-primary-text);
 }
 
 .reset-btn:hover {
-    background: #5a6268;
-    transform: translateY(-2px);
+    background: var(--primary-color);
+    transform: var(--btn-hover-transform);
 }
