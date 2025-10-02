@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const BASE_URL = import.meta.env.VITE_API_URL;
+const BASE_URL = import.meta.env.VITE_API_URL | 'http://89.169.154.49:8000';
 
 export const useFetch = (url) => {
   const [status, setStatus] = useState({
