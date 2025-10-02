@@ -19,7 +19,6 @@
 
 ## Используемые технологии:
 - React
-- Typescript
 - Web Speech API
 
 
