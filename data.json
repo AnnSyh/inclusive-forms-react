@@ -1,0 +1,144 @@
+[
+    {
+        "id": 1,
+        "text": "Фамилия Имя Отчество",
+        "q_type": "text",
+        "options_list": [],
+        "required": true,
+        "hint": ""
+    },
+    {
+        "id": 2,
+        "text": "Город, район",
+        "q_type": "text",
+        "options_list": [],
+        "required": false,
+        "hint": ""
+    },
+    {
+        "id": 3,
+        "text": "Дата рождения",
+        "q_type": "date",
+        "options_list": [],
+        "required": true,
+        "hint": "ДД.ММ.ГГГГ"
+    },
+    {
+        "id": 4,
+        "text": "Ваш запрос",
+        "q_type": "select",
+        "options_list": [
+            "профориентация",
+            "поиск работы",
+            "обучение,стажировка",
+            "консультация",
+            "самозанятость"
+        ],
+        "required": true,
+        "hint": ""
+    },
+    {
+        "id": 5,
+        "text": "Ваш запрос. Комментарии",
+        "q_type": "textarea",
+        "options_list": [],
+        "required": false,
+        "hint": "Опишите, какую работу вы ищете..."
+    },
+    {
+        "id": 6,
+        "text": "Телефон",
+        "q_type": "text",
+        "options_list": [],
+        "required": true,
+        "hint": "Начните с +7"
+    },
+    {
+        "id": 7,
+        "text": "Группа инвалидности",
+        "q_type": "select",
+        "options_list": [
+            "1 группа",
+            "2 группа",
+            "3 группа",
+            "Инвадид детства"
+        ],
+        "required": true,
+        "hint": ""
+    },
+    {
+        "id": 8,
+        "text": "Форма инвалидности",
+        "q_type": "select",
+        "options_list": [
+            "Общее заболевание",
+            "ПОДА",
+            "Передвигается на инвалидной коляске"
+        ],
+        "required": true,
+        "hint": ""
+    },
+    {
+        "id": 9,
+        "text": "Образование",
+        "q_type": "select",
+        "options_list": [
+            "Школа",
+            "Среднее специальное",
+            "Высшее",
+            "Неоконченное высшее"
+        ],
+        "required": true,
+        "hint": ""
+    },
+    {
+        "id": 10,
+        "text": "Образование. Подробности",
+        "q_type": "textarea",
+        "options_list": [],
+        "required": false,
+        "hint": "Где и чему обучались. Специальность. Курсы"
+    },
+    {
+        "id": 11,
+        "text": "Электронная почта",
+        "q_type": "text",
+        "options_list": [],
+        "required": false,
+        "hint": ""
+    },
+    {
+        "id": 12,
+        "text": "Дополнительная информация",
+        "q_type": "textarea",
+        "options_list": [],
+        "required": false,
+        "hint": "Расскажите о своих интересах, увлечениях"
+    },
+    {
+        "id": 13,
+        "text": "Страница в ВК",
+        "q_type": "text",
+        "options_list": [],
+        "required": false,
+        "hint": ""
+    },
+    {
+        "id": 14,
+        "text": "Ник в Телеграм",
+        "q_type": "text",
+        "options_list": [],
+        "required": false,
+        "hint": ""
+    },
+    {
+        "id": 15,
+        "text": "Принимаю условия обработки персональных данных",
+        "q_type": "checkbox",
+        "options_list": [
+            "Да"
+        ],
+        "required": true,
+        "hint": ""
+    }
+]

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import formData from '../../data.json'
 
 const BASE_URL = 'http://89.169.154.49:8000';
 
@@ -14,12 +15,13 @@ export const useFetch = (url) => {
 
     try {
       setStatus((prev) => ({ ...prev, isLoading: true }));
-      const response = await fetch(`${BASE_URL}${url}`);
-      if (!response.ok) {
-        throw new Error(`Ошибка HTTP, статус: ${response.status}`);
-      }
+      // const response = await fetch(`${BASE_URL}${url}`);
+      // if (!response.ok) {
+      //   throw new Error(`Ошибка HTTP, статус: ${response.status}`);
+      // }
 
-      const data = await response.json();
+      // const data = await response.json();
+      const data = formData
       setStatus({
         data,
         error: null,
