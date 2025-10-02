@@ -6,6 +6,8 @@ import { useForm } from "./hooks/useForm";
 import VoiceControls from "./components/VoiceControls/VoiceControls";
 import DynamicForm from "./components/DynamicForm/DynamicForm.jsx";
 import FormActions from "./components/FormActions/FormActions";
+import { v4 as uuidv4 } from "uuid";
+import { postQuestions } from "./api/api";
 
 function App() {
   const [autoSpeakFields, setAutoSpeakFields] = useState(true);
@@ -50,11 +52,24 @@ function App() {
     speakText(`Выбрано: ${label}`);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
-    console.log("Данные формы:", form);
-    speakText("Форма успешно отправлена! Спасибо за вашу заявку.");
+    const payload = {
+      source: "web",
+      respondent_identifier: uuidv4(),
+      answers: formFields.map((f) => ({
+        question_id: f.id,
+        value: form[f.text] ?? "",
+      })),
+    };
+    try {
+      await postQuestions(payload);
+      resetForm(formFields);
+      speakText("Форма успешно отправлена! Спасибо за вашу заявку.");
+    } catch (err) {
+      console.error("Ошибка отправки:", err);
+      speakText("Произошла ошибка при отправке формы");
+    }
   };
 
   const handleReset = () => {
