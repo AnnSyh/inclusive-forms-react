@@ -10,6 +10,18 @@ const FormField = ({
   onSpeakSelectedOption,
   optionLabels
 }) => {
+
+  // Определяем дополнительные классы
+  const getFormGroupClassName = () => {
+    let className = "form-group";
+    
+    if (field.q_type === 'checkbox') {
+      className += " form-group--checkbox";
+    }
+    
+    return className;
+  };
+
   const commonProps = {
     id: field.text,
     value: value || '',
@@ -17,7 +29,6 @@ const FormField = ({
     required: field.required || false,
     onFocus: () => onAutoSpeakField(field.label || field.text),
     placeholder: field.hint || '',
-    'aria-describedby': field.help_text ? `${field.text}-help` : undefined,
   };
 
   const renderSelectOptions = () => {
@@ -48,9 +59,7 @@ const FormField = ({
             className="form-select"
             onChange={(e) => {
               onChange(field.text, e.target.value);
-              if (optionLabels[field.text]) {
-                onSpeakSelectedOption(field.text, e.target.value);
-              }
+              onSpeakSelectedOption(e.target.value)
             }}
           >
             <option value="">{field.hint || 'Выберите вариант'}</option>
@@ -118,26 +127,22 @@ const FormField = ({
   };
 
   return (
-    <div className="form-group">
-      <label 
-        htmlFor={field.text}
-        onMouseEnter={() => onSpeakField(field.label || field.text)}
-        className="form-label"
-      >
-        {field.label || field.text}
-        {field.required && <span className="required-star"> *</span>}
-      </label>
-      
-      {renderFieldByType()}
-      
-      {field.help_text && (
-        <div 
-          id={`${field.text}-help`} 
-          className="help-text"
+   
+    <div className={getFormGroupClassName()} >
+        <div className="form-group" >
+        <label 
+            htmlFor={field.text}
+            onMouseEnter={() => onAutoSpeakField(field.label || field.text, field.q_type)}
+            className="form-label"
         >
-          {field.help_text}
+            {field.label || field.text}
+            {field.required && <span className="required-star"> *</span>}
+        </label>
+        
+        {renderFieldByType()}
+        
+
         </div>
-      )}
     </div>
   );
 };

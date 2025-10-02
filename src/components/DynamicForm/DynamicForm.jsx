@@ -19,6 +19,7 @@ const DynamicForm = ({
     <FormField
       key={field.text || field.id}
       field={field}
+      type={form[field.q_type]}
       value={form[field.text]}
       onChange={onFieldChange}
       onSpeakField={onSpeakField}

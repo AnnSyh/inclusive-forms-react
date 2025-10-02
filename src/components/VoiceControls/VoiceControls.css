@@ -1,63 +1,67 @@
+:root {
+
+}
 
 .voice-controls-wrap {
-    background: rgba(255, 255, 255, 0.95);
-    padding: 15px;
-    border-radius: 10px;
-    margin-bottom: 20px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
+    background: var(--bg-light);
+    padding: var(--padding-medium);
+    border-radius: var(--border-radius);
+    margin-bottom: var(--margin-bottom);
+    box-shadow: var(--shadow-light);
+    margin-bottom: var(--margin-bottom);
     display: flex;
-    gap: 15px;
+    gap: var(--gap-medium);
     flex-direction: column;
 }
+
 .voice-controls {
     display: flex;
-    gap: 15px;
+    gap: var(--gap-medium);
     align-items: center;
     flex-wrap: wrap;
     justify-content: space-between;
 }
 
 .voice-btn {
-    padding: 10px 20px;
+    padding: var(--padding-button);
     border: none;
-    background: #000000;
-    color: white;
+    background: var(--primary-color);
+    color: var(--text-light);
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: var(--transition);
 }
 
 .voice-btn:hover:not(:disabled) {
-    background: #000000;
-    transform: translateY(-2px);
+    background: var(--primary-color);
+    transform: var(--hover-transform);
 }
 
 .voice-btn:disabled {
-    background: #cccccc;
+    background: var(--disabled-color);
     cursor: not-allowed;
 }
 
 .voice-btn.stop {
-    background: #ffffff;
-    border: 1px solid #000000;
-    color:#000;
+    background: var(--bg-white);
+    border: var(--border-default);
+    color: var(--primary-color);
+    border: 1px solid;
 }
 
 .voice-btn.stop:hover:not(:disabled) {
-    background:  #000000;
-    color:#fff;
+    background: var(--primary-color);
+    color: var(--text-light);
 }
 
 .voice-toggle {
     display: flex;
     align-items: center;
-    gap: 8px;
-    color: #333;
+    gap: var(--gap-small);
+    color: var( --primary-color);
 }
 
 /* Адаптивность */
 @media (max-width: 768px) {
-
     .voice-controls {
         flex-direction: column;
         align-items: stretch;
