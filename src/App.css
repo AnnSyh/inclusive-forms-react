@@ -45,7 +45,7 @@
     /* Дополнительные отступы */
     --padding-medium: 15px;
     --padding-button: 14px 20px;
-    --margin-bottom: 132px;
+    /* --margin-bottom: 132px; */
     
     /* Отступы для кнопок */
     --btn-gap: 15px;
@@ -119,6 +119,8 @@
      font-size: var(--font-size-base);
 }
 
+
+
 input[type="checkbox"]{
     width: var(--checkbox-size);
     height: var(--checkbox-size);
@@ -158,14 +160,6 @@ input[type="checkbox"]{
     border-left: var(--border-width) solid var(--primary-color);
 }
 
-/* .voice-toggle input[type="checkbox"],
-.form-group--checkbox input[type="checkbox"]{
-    accent-color: var(--primary-color);
-    border-radius: 30px;
-    width: 40px;
-    height: 40px;
-    cursor: pointer;
-} */
 .voice-toggle input[type="checkbox"],
 .form-group--checkbox input[type="checkbox"]{
     accent-color: var(--primary-color);
@@ -173,6 +167,12 @@ input[type="checkbox"]{
     width: 40px;
     height: 40px;
     cursor: pointer;
+}
+
+.form-group--checkbox{
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 15px;
 }
 
 /* Адаптивность */

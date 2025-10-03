@@ -1,5 +1,5 @@
 .voice-controls-wrap {
-    margin-bottom: var(--margin-bottom);
+    margin-bottom: 132px;
     display: flex;
     gap: var(--gap-medium);
     flex-direction: column;
@@ -52,7 +52,12 @@
 
 /* Адаптивность */
 @media (max-width: 980px) {
+
+    .voice-controls-wrap {
+        margin-bottom: 60px;
+    }
     .voice-controls {
         grid-template-columns: 1fr;
+        gap: 30px;
     }
 }

@@ -18,6 +18,9 @@ const FormField = ({
     if (field.q_type === 'checkbox') {
       className += " form-group--checkbox";
     }
+    if (field.q_type === 'select') {
+      className += " form-group--select";
+    }
     
     return className;
   };
@@ -129,19 +132,17 @@ const FormField = ({
   return (
    
     <div className={getFormGroupClassName()} >
-        <div className="form-group" >
         <label 
             htmlFor={field.text}
             onMouseEnter={() => onAutoSpeakField(field.label || field.text, field.q_type)}
             className="form-label"
-        >
+            >
             {field.label || field.text}
             {field.required && <span className="required-star"> *</span>}
         </label>
         
-        {renderFieldByType()}
-        
-
+        <div className="input" >
+            {renderFieldByType()}
         </div>
     </div>
   );
