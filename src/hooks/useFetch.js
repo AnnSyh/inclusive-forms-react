@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
+import dataForm from "../../data.json";
 
-const BASE_URL = import.meta.env.VITE_API_URL || 'http://89.169.154.49:8000';
+const BASE_URL = import.meta.env.VITE_API_URL;
 
 export const useFetch = (url) => {
   const [status, setStatus] = useState({
@@ -13,18 +14,27 @@ export const useFetch = (url) => {
     setStatus({ data: null, error: null, isLoading: true });
 
     try {
-      setStatus((prev) => ({ ...prev, isLoading: true }));
-      const response = await fetch(`${BASE_URL}${url}`);
-      if (!response.ok) {
-        throw new Error(`Ошибка HTTP, статус: ${response.status}`);
-      }
+      if (BASE_URL) {
+        setStatus((prev) => ({ ...prev, isLoading: true }));
+        const response = await fetch(`${BASE_URL}${url}`);
+        if (!response.ok) {
+          throw new Error(`Ошибка HTTP, статус: ${response.status}`);
+        }
 
-      const data = await response.json();
-      setStatus({
-        data,
-        error: null,
-        isLoading: false,
-      });
+        const data = await response.json();
+        setStatus({
+          data,
+          error: null,
+          isLoading: false,
+        });
+      } else {
+        const data = dataForm;
+        setStatus({
+          data,
+          error: null,
+          isLoading: false,
+        });
+      }
     } catch (error) {
       setStatus({
         data: null,
