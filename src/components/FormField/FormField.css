@@ -16,7 +16,7 @@
     width: 100%;
     padding: var(--spacing-medium) var(--spacing-large);
     border: 2px solid var(--border-default);
-    border-radius: var(--border-radius);
+    border-radius: var(--border-radius-btn);
     transition: var(--transition);
     background: var(--background-white);
 }

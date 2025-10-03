@@ -31,21 +31,21 @@
     /* Размеры шрифтов */
     --font-size-base: 40px;
     --font-size-mobile: 20px;
-    --font-size-heading: 60px;
+    --font-size-heading: 48px;
     --font-size-heading-mobile: 30px;
     
     /* Отступы */
     --spacing-small: 10px;
     --spacing-medium: 15px;
     --spacing-large: 20px;
-    --spacing-xl: 30px;
+    --spacing-xl: 40px 20px;
     --spacing-xxl: 84px;
     --spacing-xxxl: 108px;
     
     /* Дополнительные отступы */
     --padding-medium: 15px;
-    --padding-button: 10px 20px;
-    --margin-bottom: 20px;
+    --padding-button: 14px 20px;
+    --margin-bottom: 132px;
     
     /* Отступы для кнопок */
     --btn-gap: 15px;
@@ -59,12 +59,13 @@
     --border-width: 4px;
     
     /* Радиусы */
-    --border-radius: 15px;
+    --border-radius: 40px;
+    --border-radius-btn: 20px;
     --border-radius-small: 8px;
     
     /* Gap отступы */
     --gap-small: 8px;
-    --gap-medium: 15px;
+    --gap-medium: 40px;
     
     /* Анимации */
     --transition: all 0.3s ease;
@@ -108,8 +109,8 @@
     background: var(--background-light);
     padding: var(--spacing-xl);
     border-radius: var(--border-radius);
-    box-shadow: var(--shadow);
     font-size: var(--font-size-base);
+    border: 3px solid var(--border-default);
 }
 
 .accessibility-form input,
@@ -130,14 +131,14 @@ input[type="checkbox"]{
     color: var(--text-color);
     margin-bottom: var(--spacing-xxxl);
     font-size: var(--font-size-heading);
-    font-weight: 400;
+    font-weight: 600;
 }
 
 .voice-btn,
 .submit-btn,
 .reset-btn {
     font-size: var(--font-size-base);
-    border-radius: var(--border-radius);
+    border-radius: var(--border-radius-btn);
 }
 
 .form-group {
@@ -155,6 +156,23 @@ input[type="checkbox"]{
     padding: var(--spacing-large);
     border-radius: var(--border-radius-small);
     border-left: var(--border-width) solid var(--primary-color);
+}
+
+/* .voice-toggle input[type="checkbox"],
+.form-group--checkbox input[type="checkbox"]{
+    accent-color: var(--primary-color);
+    border-radius: 30px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+} */
+.voice-toggle input[type="checkbox"],
+.form-group--checkbox input[type="checkbox"]{
+    accent-color: var(--primary-color);
+    border-radius: 30px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
 }
 
 /* Адаптивность */

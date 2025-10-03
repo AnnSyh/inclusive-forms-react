@@ -128,7 +128,7 @@ function App() {
       />
 
       <form onSubmit={handleSubmit} className="accessibility-form">
-        <h1>Заявка на содействие в трудоустройстве</h1>
+        <h1>Заявка на содействие<br/> в трудоустройстве</h1>
 
         <DynamicForm
           formFields={formFields}

@@ -1,9 +1,4 @@
 .voice-controls-wrap {
-    background: var(--bg-light);
-    padding: var(--padding-medium);
-    border-radius: var(--border-radius);
-    margin-bottom: var(--margin-bottom);
-    box-shadow: var(--shadow-light);
     margin-bottom: var(--margin-bottom);
     display: flex;
     gap: var(--gap-medium);
@@ -11,11 +6,9 @@
 }
 
 .voice-controls {
-    display: flex;
-    gap: var(--gap-medium);
-    align-items: center;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 62px;
 }
 
 .voice-btn {
@@ -25,6 +18,7 @@
     color: var(--text-light);
     cursor: pointer;
     transition: var(--transition);
+    white-space: nowrap;
 }
 
 .voice-btn:hover:not(:disabled) {
@@ -41,7 +35,7 @@
     background: var(--bg-white);
     border: var(--border-default);
     color: var(--primary-color);
-    border: 1px solid;
+    border: 3px solid;
 }
 
 .voice-btn.stop:hover:not(:disabled) {
@@ -57,9 +51,8 @@
 }
 
 /* Адаптивность */
-@media (max-width: 768px) {
+@media (max-width: 980px) {
     .voice-controls {
-        flex-direction: column;
-        align-items: stretch;
+        grid-template-columns: 1fr;
     }
 }
