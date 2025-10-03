@@ -33,12 +33,11 @@ const FormField = ({
     const placeholder = field.hint || '';
     const currentValue = getCurrentValueText();
     const optionsText = field.options_list.join(', ');
+    const optionsCount = field.options_list?.length || 0;
     
     let textToSpeak = fieldName;
 
     if (field.q_type === 'select') {
-      // Для select добавляем информацию о выпадающем списке
-      const optionsCount = field.options_list?.length || 0;
       textToSpeak += `. Выпадающий список.`;
     }
 
@@ -50,11 +49,10 @@ const FormField = ({
       textToSpeak += `. Подсказка: ${placeholder}`;
     }
 
-    textToSpeak += `.${optionsCount} вариантов. ${optionsText} `;
+    textToSpeak += `.${optionsCount} всего вариантов. ${optionsText} `;
     
 
     onAutoSpeakField(textToSpeak);
-    console.log('onFocus: field = ', field);
   };
 
   // Функция для получения текстового представления текущего значения
@@ -110,9 +108,9 @@ const FormField = ({
       const fieldName = field.label || field.text;
       const currentValue = getCurrentValueText();
       const optionsCount = field.options_list.length;
-      const optionsText = field.options_list.join(', ');
+    //   const optionsText = field.options_list.join(', ');
       
-      let textToSpeak = `${fieldName}. Выпадающий список. ${optionsCount} .${optionsText} вариантов.`;
+      let textToSpeak = `${fieldName}. Выпадающий список. Всего ${optionsCount} вариантов.`;
 
       if (currentValue) {
         // Если значение выбрано - говорим что выбрано
@@ -130,7 +128,6 @@ const FormField = ({
     value: value || '',
     onChange: (e) => {
       onChange(field.text, e.target.value);
-      console.log('onChange: field = ', field);
     },
     required: field.required || false,
     onFocus: handleFieldFocus,
