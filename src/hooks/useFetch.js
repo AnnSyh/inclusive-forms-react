@@ -1,50 +1,50 @@
 import { useEffect, useState } from "react";
 import dataForm from "../../data.json";
 
-const BASE_URL = import.meta.env.VITE_API_URL;
+const RUNTIME_BASE = import.meta.env.VITE_API_URL || "";
 
-export const useFetch = (url) => {
+export const useFetch = (path) => {
   const [status, setStatus] = useState({
     isLoading: false,
     data: null,
     error: null,
   });
 
-  const getFetch = async () => {
-    setStatus({ data: null, error: null, isLoading: true });
+  useEffect(() => {
+    let cancelled = false;
 
-    try {
-      if (BASE_URL) {
-        setStatus((prev) => ({ ...prev, isLoading: true }));
-        const response = await fetch(`${BASE_URL}${url}`);
-        if (!response.ok) {
-          throw new Error(`Ошибка HTTP, статус: ${response.status}`);
+    const load = async () => {
+      setStatus({ data: null, error: null, isLoading: true });
+
+      const isHttpsPage =
+        typeof window !== "undefined" && window.location.protocol === "https:";
+      const isInsecureBase = RUNTIME_BASE.startsWith("http://");
+
+      try {
+        if (!RUNTIME_BASE || (isHttpsPage && isInsecureBase)) {
+          if (!cancelled)
+            setStatus({ data: dataForm, error: null, isLoading: false });
+          return;
         }
 
-        const data = await response.json();
-        setStatus({
-          data,
-          error: null,
-          isLoading: false,
+        const res = await fetch(`${RUNTIME_BASE}${path}`, {
+          headers: { Accept: "application/json" },
         });
-      } else {
-        const data = dataForm;
-        setStatus({
-          data,
-          error: null,
-          isLoading: false,
-        });
+
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = await res.json();
+        if (!cancelled) setStatus({ data, error: null, isLoading: false });
+      } catch (err) {
+        if (!cancelled)
+          setStatus({ data: dataForm, error: null, isLoading: false });
       }
-    } catch (error) {
-      setStatus({
-        data: null,
-        error: `Ошибка при запросе: ${error}`,
-        isLoading: false,
-      });
-    }
-  };
-  useEffect(() => {
-    getFetch(url);
-  }, [url]);
+    };
+
+    load();
+    return () => {
+      cancelled = true;
+    };
+  }, [path]);
+
   return status;
 };
