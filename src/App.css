@@ -173,6 +173,7 @@ input[type="checkbox"]{
     display: flex;
     flex-direction: row-reverse;
     gap: 15px;
+    align-items: center;
 }
 
 /* Адаптивность */

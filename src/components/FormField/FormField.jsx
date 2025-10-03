@@ -25,12 +25,112 @@ const FormField = ({
     return className;
   };
 
+
+
+  // Функция для озвучки поля при фокусе с информацией о списке
+  const handleFieldFocus = () => {
+    const fieldName = field.label || field.text;
+    const placeholder = field.hint || '';
+    const currentValue = getCurrentValueText();
+    const optionsText = field.options_list.join(', ');
+    
+    let textToSpeak = fieldName;
+
+    if (field.q_type === 'select') {
+      // Для select добавляем информацию о выпадающем списке
+      const optionsCount = field.options_list?.length || 0;
+      textToSpeak += `. Выпадающий список. ${optionsCount} варианта: ${optionsText} `;
+    }
+    
+    if (placeholder) {
+      textToSpeak += `. Подсказка: ${placeholder}`;
+    }
+    
+    if (currentValue) {
+      textToSpeak += `. Текущее значение: ${currentValue}`;
+    }
+
+    onAutoSpeakField(textToSpeak);
+    console.log('onFocus: field = ', field);
+  };
+
+  // Функция для получения текстового представления текущего значения
+  const getCurrentValueText = () => {
+    if (!value) return '';
+
+    switch (field.q_type) {
+      case 'select':
+        const selectedOption = field.options_list?.find(opt => opt === value);
+        return selectedOption || value;
+      
+      case 'checkbox':
+        return value ? 'Отмечено' : 'Не отмечено';
+      
+      case 'date':
+        if (value) {
+          const date = new Date(value);
+          return date.toLocaleDateString('ru-RU');
+        }
+        return '';
+      
+      default:
+        return value.toString();
+    }
+  };
+
+  // Функция для озвучки при наведении на label
+  const handleLabelHover = () => {
+    const fieldName = field.label || field.text;
+    const placeholder = field.hint || '';
+    const currentValue = getCurrentValueText();
+    
+    let textToSpeak = fieldName;
+    
+    if (field.q_type === 'select') {
+      textToSpeak += '. Выпадающий список';
+    }
+    
+    if (placeholder) {
+      textToSpeak += `. ${placeholder}`;
+    }
+    
+    if (currentValue) {
+      textToSpeak += `. Значение: ${currentValue}`;
+    }
+
+    onAutoSpeakField(textToSpeak, field.q_type);
+  };
+
+  // Функция для озвучки при наведении на сам select
+  const handleSelectHover = () => {
+    if (field.q_type === 'select' && field.options_list) {
+      const fieldName = field.label || field.text;
+      const currentValue = getCurrentValueText();
+      const optionsCount = field.options_list.length;
+      const optionsText = field.options_list.join(', ');
+      
+      let textToSpeak = `${fieldName}. Выпадающий список. ${optionsCount} .${optionsText} вариантов.`;
+
+      if (currentValue) {
+        // Если значение выбрано - говорим что выбрано
+        textToSpeak += `. Выбрано: ${currentValue}`;
+      } else {
+         textToSpeak += `.Не выбрано`;
+      }
+      
+      onAutoSpeakField(textToSpeak);
+    }
+  };
+
   const commonProps = {
     id: field.text,
     value: value || '',
-    onChange: (e) => onChange(field.text, e.target.value),
+    onChange: (e) => {
+      onChange(field.text, e.target.value);
+      console.log('onChange: field = ', field);
+    },
     required: field.required || false,
-    onFocus: () => onAutoSpeakField(field.label || field.text),
+    onFocus: handleFieldFocus,
     placeholder: field.hint || '',
   };
 
@@ -62,8 +162,24 @@ const FormField = ({
             className="form-select"
             onChange={(e) => {
               onChange(field.text, e.target.value);
-              onSpeakSelectedOption(e.target.value)
+              // Озвучиваем выбранное значение
+              const selectedOption = field.options_list?.find(opt => opt === e.target.value);
+              if (selectedOption) {
+                onSpeakSelectedOption(selectedOption);
+              }
             }}
+            onKeyDown={(e) => {
+              // Озвучка при навигации стрелками
+              if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
+                setTimeout(() => {
+                  const selectedOption = e.target.options[e.target.selectedIndex]?.text;
+                  if (selectedOption && selectedOption !== '') {
+                    onAutoSpeakField(selectedOption);
+                  }
+                }, 100);
+              }
+            }}
+            onMouseEnter={handleSelectHover} // Используем отдельную функцию для наведения на select
           >
             <option value="">{field.hint || 'Выберите вариант'}</option>
             {renderSelectOptions()}
@@ -76,7 +192,11 @@ const FormField = ({
             type="checkbox"
             {...commonProps}
             checked={!!value}
-            onChange={(e) => onChange(field.text, e.target.checked)}
+            onChange={(e) => {
+              onChange(field.text, e.target.checked);
+              const stateText = e.target.checked ? 'Отмечено' : 'Снято';
+              onAutoSpeakField(stateText);
+            }}
             className="form-checkbox"
           />
         );
@@ -130,20 +250,20 @@ const FormField = ({
   };
 
   return (
-   
-    <div className={getFormGroupClassName()} >
-        <label 
-            htmlFor={field.text}
-            onMouseEnter={() => onAutoSpeakField(field.label || field.text, field.q_type)}
-            className="form-label"
-            >
-            {field.label || field.text}
-            {field.required && <span className="required-star"> *</span>}
-        </label>
+    <div className={getFormGroupClassName()}>
+      <label 
+        htmlFor={field.text}
+        onMouseEnter={handleLabelHover}
+        className="form-label"
+      >
+        {field.label || field.text}
+        {field.required && <span className="required-star"> *</span>}
         
-        <div className="input" >
-            {renderFieldByType()}
-        </div>
+      </label>
+      
+      <div className="input">
+        {renderFieldByType()}
+      </div>
     </div>
   );
 };
