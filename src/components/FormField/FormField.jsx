@@ -48,8 +48,9 @@ const FormField = ({
     if (placeholder) {
       textToSpeak += `. Подсказка: ${placeholder}`;
     }
-
-    textToSpeak += `.${optionsCount} всего вариантов. ${optionsText} `;
+    if (optionsCount) {
+        textToSpeak += `.${optionsCount} всего вариантов. ${optionsText} `;
+    }
     
 
     onAutoSpeakField(textToSpeak);
