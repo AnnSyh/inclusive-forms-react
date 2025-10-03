@@ -39,16 +39,19 @@ const FormField = ({
     if (field.q_type === 'select') {
       // Для select добавляем информацию о выпадающем списке
       const optionsCount = field.options_list?.length || 0;
-      textToSpeak += `. Выпадающий список. ${optionsCount} варианта: ${optionsText} `;
+      textToSpeak += `. Выпадающий список.`;
+    }
+
+    if (currentValue) {
+      textToSpeak += `. Текущее значение: ${currentValue}`;
     }
     
     if (placeholder) {
       textToSpeak += `. Подсказка: ${placeholder}`;
     }
+
+    textToSpeak += `.${optionsCount} вариантов. ${optionsText} `;
     
-    if (currentValue) {
-      textToSpeak += `. Текущее значение: ${currentValue}`;
-    }
 
     onAutoSpeakField(textToSpeak);
     console.log('onFocus: field = ', field);
